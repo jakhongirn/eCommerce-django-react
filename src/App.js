@@ -1,5 +1,18 @@
+import Header from './components/Header'
+import Footer from './components/Footer' 
+
 function App() {
-    return <div > Let 's do something unbelievable </div>;
+    return (
+     
+        <div> 
+            <Header /> 
+            <main> 
+                <h1>Welcome!</h1> 
+            </main>
+            <Footer />
+        </div>
+
+    );
 }
 
 export default App;
