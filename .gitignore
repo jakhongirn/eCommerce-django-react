@@ -11,6 +11,12 @@
 # production
 /build
 
+# Django stuff:
+*.log
+../backend/local_settings.py
+../backend/db.sqlite3
+../backend/db.sqlite3-journal
+
 # misc
 .DS_Store
 .env.local
