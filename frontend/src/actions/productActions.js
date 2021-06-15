@@ -9,7 +9,7 @@ export const listProducts = () => async (dispatch) => {
   try {
         dispatch({ type: PRODUCT_LIST_REQUEST })
 
-        const { data } = await axios.get("/ap/products/"); /* Go to package.json */
+        const { data } = await axios.get("/api/products/"); /* Go to package.json */
 
         dispatch({
         type: PRODUCT_LIST_SUCCESS,
