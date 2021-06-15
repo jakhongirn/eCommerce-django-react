@@ -17,7 +17,7 @@ import products from "../products";
 
 import { listProductDetails } from "../actions/productActions";
 
-function ProductScreen({ match}) {
+function ProductScreen({match, history}) {
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
@@ -28,7 +28,7 @@ function ProductScreen({ match}) {
   }, [dispatch, match]);
 
   const addToCartHandler = () =>{
-    console.log('Add to cart:', match.params.id)
+    history.push(`/cart/${match.params.id}?qty=${qty}`)
   }
 
   /*  const product = products.find((p) => p._id === match.params.id); */ /* static file  */
