@@ -17,7 +17,7 @@ import products from "../products";
 
 import { listProductDetails } from "../actions/productActions";
 
-function ProductScreen({ match }) {
+function ProductScreen({ match}) {
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
@@ -26,6 +26,10 @@ function ProductScreen({ match }) {
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match]);
+
+  const addToCartHandler = () =>{
+    console.log('Add to cart:', match.params.id)
+  }
 
   /*  const product = products.find((p) => p._id === match.params.id); */ /* static file  */
   return (
@@ -107,6 +111,7 @@ function ProductScreen({ match }) {
                 <ListGroup.Item>
                   <Row>
                     <Button
+                      onClick={addToCartHandler}
                       className="btn-block"
                       disabled={product.countInStock === 0}
                       type="button"
