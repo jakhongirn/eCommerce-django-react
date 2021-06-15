@@ -5,7 +5,7 @@ import Product from '../components/Product'
 import axios from 'axios' 
 
 function HomeScreen() {
-    const [products, setProducts] = useState([])
+    
 
     useEffect(()=> {
 
