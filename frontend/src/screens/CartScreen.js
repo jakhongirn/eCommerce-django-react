@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function CarScreen() {
+function CartScreen() {
     return (
         <div>
             Cart
         </div>
     )
 }
+
+export default CartScreen
