@@ -33,6 +33,10 @@ function CartScreen({ match, location, history }) {
       console.log("remove:", id)
   }
 
+  const checkoutHandler = () => {
+      history.push('/login?redirect=shipping')
+  }
+
   return (
     <Row>
       <Col md={8}>
@@ -94,6 +98,16 @@ function CartScreen({ match, location, history }) {
 
                   </ListGroup.Item>
               </ListGroup>
+              <ListGroup.Item>
+                  <Button 
+                    type='button'
+                    className='btn-block'
+                    disabled={cartItems.length === 0}
+                    onClick = {checkoutHandler}
+                    >
+                        Proceed to checkout
+                    </Button>
+              </ListGroup.Item>
           </Card>
       </Col>
 
