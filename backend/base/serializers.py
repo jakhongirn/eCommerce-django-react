@@ -23,7 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
             name=obj.email
         return name
 
-class UserSerializerWithToken():
+class UserSerializerWithToken(UserSerializer):
     token = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = User
