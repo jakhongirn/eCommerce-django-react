@@ -3,9 +3,10 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.getRoutes, name="routes"),
+    # path('', views.getRoutes, name="routes"),
     path('products/', views.getProducts, name="products"),
 
+    path('users/register', views.registerUser, name="register"),
     path('users/profile/', views.getUserProfile, name="user-profile"),
 
     path('users/', views.getUsers, name="users"),
