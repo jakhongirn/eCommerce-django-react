@@ -33,7 +33,7 @@ export const login = (email, password) => async (dispatch) => {
 
   } catch (error) {
     dispatch({
-      type: PRODUCT_DETAILS_FAIL,
+      type: USER_LOGIN_FAIL,
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail
