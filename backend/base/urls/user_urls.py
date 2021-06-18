@@ -5,7 +5,7 @@ from ..views import user_views as views
 urlpatterns = [
     # path('', views.getRoutes, name="routes"),
 
-    path('register', views.registerUser, name="register"),
+    path('register/', views.registerUser, name="register"),
     path('profile/', views.getUserProfile, name="user-profile"),
 
     path('users/', views.getUsers, name="users"),
