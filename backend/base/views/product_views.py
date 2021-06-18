@@ -12,8 +12,6 @@ from ..serializers import ProductSerializer, UserSerializer, UserSerializerWithT
 
 
 
-
-
 @api_view(['GET',])
 def getProducts(request):
     products = Product.objects.all()
