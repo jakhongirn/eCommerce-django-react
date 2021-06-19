@@ -4,8 +4,9 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { getUserDetails } from "../actions/userActions";
+import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import { register } from "../actions/userActions";
+import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 
 export default function ProfileScreen({ history }) {
 
@@ -18,16 +19,22 @@ export default function ProfileScreen({ history }) {
     const dispatch = useDispatch();
 
 
-    const userDetails = useSelector((state) => state.userDetails);
+    const userDetails = useSelector(state => state.userDetails);
     const { error, loading, user } = userDetails;
-    const userLogin = useSelector((state) => state.userLogin);
+
+    const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
+
+    const userUpdateProfile = useSelector(state => state.userUpdateProfile);
+    const { success} = userUpdateProfile;
+
 
     useEffect(() => {
         if (!userInfo) {
         history.push('/login');
         }else {
-            if(!user || !user.name){
+            if(!user || !user.name || success || userInfo._id !== user._id){
+                dispatch({type: USER_UPDATE_PROFILE_RESET})
                 dispatch(getUserDetails('profile'))
 
             }else{
@@ -35,7 +42,7 @@ export default function ProfileScreen({ history }) {
                 setEmail(user.email)
             }
         }
-    }, [dispatch, history, userInfo, user]);
+    }, [dispatch, history, userInfo, user, success]);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -43,7 +50,15 @@ export default function ProfileScreen({ history }) {
         if(password != confirmPassword) {
             setMessage('Passwords do not match')
         } else {
-            console.log('Updating..')
+            dispatch(updateUserProfile({
+                'id': user._id, /* There is a issue. Can not define _id */
+                'name': name,
+                'email': email, 
+                'password': password 
+            
+            
+            }))
+            setMessage('')
         }
         
     };
